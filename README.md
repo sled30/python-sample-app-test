@@ -2,7 +2,8 @@
 
 Sample Python application on Flask with PostgreSQL database
 
-## deployment
+Deployment
+---
 
 * install Python 3.6
 * install libs `pip install -r requirements.txt`
@@ -11,7 +12,8 @@ Sample Python application on Flask with PostgreSQL database
 * migrate database `flask db upgrade`
 * start application `python3 app.py` (app listen on `0.0.0.0:5000`)
 
-## api information
+API information
+---
 
 **Show users: `GET /api/user`**
 
@@ -77,3 +79,14 @@ Sample Python application on Flask with PostgreSQL database
 * **Sample Call**
 
   `curl -i -X POST -d '{ "username": "user123", "email": "user@example.com", "password_hash": "example" }' -H "Content-Type: application/json" http://127.0.0.1:5000/api/user`
+
+
+License
+---
+
+MIT / BSD
+
+Author Information
+---
+
+This app was created in 2019 by [Maxim Baranov](https://github.com/mbaran0v).
