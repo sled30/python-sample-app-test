@@ -3,7 +3,6 @@
 Sample Python application on Flask with PostgreSQL database
 
 ## deployment
----
 
 * install Python 3.6
 * install libs `pip install -r requirements.txt`
@@ -13,7 +12,6 @@ Sample Python application on Flask with PostgreSQL database
 * start application `python3 app.py` (app listen on `0.0.0.0:5000`)
 
 ## api information
----
 
 **Show users: `GET /api/user`**
 
