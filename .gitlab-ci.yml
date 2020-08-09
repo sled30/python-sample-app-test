@@ -1,5 +1,5 @@
 stages:
-  - build_web
+  - build
 build:
-  stage: build_web
+  stage: build
   image: nginx:1.19
