@@ -3,5 +3,5 @@ stages:
 build:
   stage: build
   script:
-    - docker build -t web docker/web
-    - docker build -t web docker/db
+    - docker build -t web ./docker/web
+    - docker build -t web ./docker/db
