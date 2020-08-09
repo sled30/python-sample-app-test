@@ -3,5 +3,3 @@ stages:
 build:
   stage: build_web
   image: nginx:1.19
-  stage: build_db
-  image: postgres:12.2
