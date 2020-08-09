@@ -2,4 +2,4 @@ stages:
   - test
 test:
   stage: test
-  script: echo "check test"
+  script: docker ps
