@@ -2,5 +2,5 @@ stages:
   - build
 build:
   stage: build
-  - docker build -t web docker/web
-  - docker build -t web docker/db
+  docker build -t web docker/web
+  docker build -t web docker/db
