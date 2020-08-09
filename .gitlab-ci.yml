@@ -1,7 +1,7 @@
 stages:
-  - test
-test:
-  stage: test
-  script: echo "1"
-#s
-#dd
+  - build
+build:
+  stage: build
+  - docker build -t web docker/web
+  -  docker build -t web docker/db
+  

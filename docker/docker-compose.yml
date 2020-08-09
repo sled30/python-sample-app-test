@@ -1,0 +1,73 @@
+version: '3.6'
+#MAINTAINER: max-30ru@mail.ru
+networks:
+  app_flex_back:
+    # name: custom_network
+    driver: bridge
+
+  app_flex_frontend:
+    driver: bridge
+
+services:
+  db:
+    build:
+      context: ./db
+    environment:
+      POSTGRES_user: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+      PGDATA: /var/lib/postgresql/data
+    # ports:
+    #   - 5432:5432
+    volumes:
+      - ./data/:/var/lib/postgresql/data/
+      - ./db/config/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./init_script/:/docker-entrypoint-initdb.d/
+
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    networks:
+      app_flex_back:
+        aliases:
+          - db
+          - database
+
+  flask_app:
+    build:
+      context: ./app
+    environment:
+      FLASK_APP: app.py
+      POSTGRESQL_URL: postgresql://postgres:postgres@db/postgres
+      PATH: $PATH:/usr/local/bin/
+  #  command: 'flask db upgrade'
+    networks:
+      - app_flex_back
+      - app_flex_frontend
+    # ports:
+    #   - 5000:5000
+    depends_on:
+      - db
+    links:
+      - db
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:5000"]
+    #   interval: 10s
+    #   timeout: 5s
+    #   retries: 3
+    #   start_period: 30s
+  #  entrypoint: ["python3"]
+
+    entrypoint: ["supervisord"]
+
+  web:
+    build:
+      context: ./web
+    ports:
+      - 80:80
+    volumes:
+      - ./web/conf/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - flask_app
+    networks:
+      - app_flex_frontend
+    links:
+      - flask_app
