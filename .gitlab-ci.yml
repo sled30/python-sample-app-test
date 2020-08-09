@@ -1,7 +1,7 @@
 stages:
   - build
 build:
-  stage: web
+  stage: build
   image: nginx:1.19
   script:
     - docker build -t web ./docker/web
