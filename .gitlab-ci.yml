@@ -1,7 +1,7 @@
 stages:
-  - build
+  - build_web
 build:
-  stage: build
+  stage: build_web
   image: nginx:1.19
-  script:
-    - docker build -t web ./docker/web
+  stage: build_db
+  image: postgres:12.2
