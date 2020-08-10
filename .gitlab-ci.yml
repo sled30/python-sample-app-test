@@ -4,5 +4,5 @@ compile:
   stage: build
   image: docker:latest
   script:
-    - docker login -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD}
+    - docker login 172.16.2.9:5005 -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD}
     - echo ${CI_PIPELINE_ID}
