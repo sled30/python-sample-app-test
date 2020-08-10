@@ -7,6 +7,6 @@ build:
     - docker login 172.16.2.9:5005 -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD}
     - echo ${CI_PIPELINE_ID}
     - docker build -t app/web:${CI_PIPELINE_ID} ./docker/web
-    - docker push 172.16.2.9:5005/python-sample-app-test1 "app/web:${CI_PIPELINE_ID}"
+    - docker push "app/web:${CI_PIPELINE_ID}"
     # - docker build -t app/app:${CI_PIPELINE_ID} ./docker/app
     # - docker push 172.16.2.9:5005/root/python-sample-app-test1 app/web:${CI_PIPELINE_ID}
