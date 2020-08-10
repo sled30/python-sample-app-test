@@ -14,7 +14,7 @@ build:
     - docker push 172.16.2.9:5005/root/python-sample-app-test1/app:${CI_PIPELINE_ID}
     - docker build -t 172.16.2.9:5005/root/python-sample-app-test1/db:${CI_PIPELINE_ID} ./docker/db
     - docker push 172.16.2.9:5005/root/python-sample-app-test1/db:${CI_PIPELINE_ID}
-    - docker kill $(docker ps -q) || true
+  #  - docker kill $(docker ps -q) || true
     - docker rm $(docker ps -a -q) || true
 test:
   stage: test
