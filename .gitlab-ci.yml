@@ -3,6 +3,7 @@ stages:
   - push
   - clear
   - deploy
+  - prod
 build:
   stage: build
   image: docker:latest
@@ -29,5 +30,10 @@ clear:
     - docker system prune -a -f|| true
 deploy:
   stage: deploy
+  script:
+    - echo "Done"
+prod:
+  when: manual
+  stage: prod
   script:
     - echo "Done"
