@@ -7,6 +7,8 @@ stages:
 build:
   stage: build
   image: docker:latest
+  only:
+    - "develop"
   before_script:
     - docker login 172.16.2.9:5005 -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD}
   script:
@@ -17,6 +19,8 @@ build:
 push:
   stage: push
   image: docker:latest
+  only:
+    - "develop"
   before_script:
     - docker login 172.16.2.9:5005 -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD}
   script:
@@ -25,15 +29,21 @@ push:
     - docker push 172.16.2.9:5005/root/python-sample-app-test1/db:${CI_PIPELINE_ID}
 clear:
   stage: clear
+  only:
+    - "develop"
   script:
     - docker rmi $(docker ps -a -q) || true
     - docker system prune -a -f|| true
 deploy:
   stage: deploy
+  only:
+    - "develop"
   script:
     - echo "Done"
 prod:
   when: manual
   stage: prod
+  only:
+    - "develop"
   script:
     - echo "Done"
