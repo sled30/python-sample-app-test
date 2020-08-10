@@ -8,7 +8,7 @@ build:
   stage: build
   image: docker:latest
   only:
-    - "develop"
+    - develop
   before_script:
     - docker login 172.16.2.9:5005 -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD}
   script:
@@ -20,7 +20,7 @@ push:
   stage: push
   image: docker:latest
   only:
-    - "develop"
+    - develop
   before_script:
     - docker login 172.16.2.9:5005 -u ${REGISTRY_USER} -p ${REGISTRY_PASSWORD}
   script:
@@ -30,20 +30,20 @@ push:
 clear:
   stage: clear
   only:
-    - "develop"
+    - develop
   script:
     - docker rmi $(docker ps -a -q) || true
     - docker system prune -a -f|| true
 deploy:
   stage: deploy
   only:
-    - "develop"
+    - develop
   script:
     - echo "Done"
 prod:
   when: manual
   stage: prod
   only:
-    - "develop"
+    - develop
   script:
     - echo "Done"
