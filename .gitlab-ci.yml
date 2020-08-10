@@ -8,5 +8,5 @@ build:
     - echo ${CI_PIPELINE_ID}
     - docker build -t 172.16.2.9:5005/root/python-sample-app-test1/web:${CI_PIPELINE_ID} ./docker/web
     - docker push 172.16.2.9:5005/root/python-sample-app-test1/web:${CI_PIPELINE_ID}
-    - docker build -t 172.16.2.9:5005/root/python-sample-app-test1/app/web:${CI_PIPELINE_ID} ./docker/app
+    - docker build -t 172.16.2.9:5005/root/python-sample-app-test1/app:${CI_PIPELINE_ID} ./docker/app
     - docker push 172.16.2.9:5005/root/python-sample-app-test1/app:${CI_PIPELINE_ID}
