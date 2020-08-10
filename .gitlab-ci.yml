@@ -3,3 +3,5 @@ stages:
 compile:
   stage: build
   image: nginx:1.19
+  script:
+    - echo "1"
