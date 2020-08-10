@@ -1,8 +1,7 @@
 stages:
   - build
-compile:
-  stage: build
-  image: docker:latest
-  script:
-    - echo ${REGISTRY_PASSWORD} |docker login 172.16.2.9:5005 -username root -password-stdin 
-    - echo ${CI_PIPELINE_ID}
+stage: build
+image: docker:latest
+script:
+  - echo ${REGISTRY_PASSWORD} |docker login 172.16.2.9:5005 -username root -password-stdin
+  - echo ${CI_PIPELINE_ID}
