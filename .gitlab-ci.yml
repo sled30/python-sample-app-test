@@ -44,7 +44,7 @@ prod:
   when: manual
   stage: prod
   only:
-    - develop
+    - master
   script:
     - echo "Done"
 ###
