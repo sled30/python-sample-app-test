@@ -41,8 +41,10 @@ deploy:
   script:
     - echo "Done"
 prod:
-  when: manual
-  stage: prod
+  except:
+    - master
+  # when: manual
+  # stage: prod
   only:
     - master
   script:
